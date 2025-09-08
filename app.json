@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "material-insights",
-    "slug": "material-insights",
+    "name": "Materiel Insights",
+    "slug": "materiel-insights",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "materialinsights",
+    "scheme": "materielinsights",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -33,7 +33,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
