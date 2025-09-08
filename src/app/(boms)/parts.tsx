@@ -4,11 +4,12 @@ import { Button } from '@react-navigation/elements'
 import { useAuthStore } from '@/src/store/auth.store'
 
 const Parts = () => {
-  const { logout } = useAuthStore();
+  const { logout, resetAll } = useAuthStore();
 
   return (
-    <SafeAreaView className='flex-1 items-center justify-center'>
+    <SafeAreaView className='flex-1 items-center justify-center gap-6'>
       <Button onPress={() => { logout() }}>LogOut</Button>
+      <Button onPress={() => { resetAll() }}>Reset</Button>
     </SafeAreaView>
   )
 }

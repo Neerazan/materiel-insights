@@ -9,6 +9,8 @@ type userState = {
   login: () => void;
   logout: () => void;
   loginAsAdmin: () => void;
+  setTermsAccepted: () => void;
+  resetAll: () => void;
 };
 
 export const useAuthStore = create(
@@ -20,6 +22,8 @@ export const useAuthStore = create(
       login: () => set({ isLoggedIn: true }),
       logout: () => set({ isLoggedIn: false, isAdmin: false }),
       loginAsAdmin: () => set({ isAdmin: true, isLoggedIn: true }),
+      setTermsAccepted: () => set({ hasAgreedToTerms: true }),
+      resetAll: () => set({ isLoggedIn: false, isAdmin: false, hasAgreedToTerms: false }),
     }),
 
     {

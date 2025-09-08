@@ -1,21 +1,19 @@
-import { View, Text, Image } from "react-native"
-import { Slot } from "expo-router"
-import { images } from "@/src/constants"
+import { Stack } from "expo-router"
+import { useAuthStore } from "@/src/store/auth.store"
 
 export default function AuthLayout() {
-  return (
-    <View className="flex-1 justify-center bg-white px-6">
-      <View className="items-center mb-6">
-        <Image
-          source={images.logo}
-          className="self-center size-20"
-        />
 
-        <Text className="text-2xl font-semibold text-gray-800 text-center mb-8">
-          Material Insight
-        </Text>
-      </View>
-      <Slot />
-    </View>
+  const { hasAgreedToTerms, isLoggedIn } = useAuthStore();
+
+  return (
+    <Stack screenOptions={{ headerShown: false }} >
+      <Stack.Protected guard={!hasAgreedToTerms && !isLoggedIn}>
+        <Stack.Screen name="terms" />
+      </Stack.Protected>
+      <Stack.Protected guard={!isLoggedIn && hasAgreedToTerms}>
+        <Stack.Screen name="sign-in" />
+        <Stack.Screen name="sign-up" />
+      </Stack.Protected>
+    </Stack>
   )
 }
