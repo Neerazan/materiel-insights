@@ -3,8 +3,8 @@ import React from 'react'
 
 const Structure = () => {
   return (
-    <View>
-      <Text className='text-green-400'>Structure</Text>
+    <View className='flex-1 justify-center items-center'>
+      <Text>Structure</Text>
     </View>
   )
 }

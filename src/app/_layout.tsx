@@ -9,12 +9,6 @@ export default function RootLayout() {
   return <Stack
     screenOptions={{
       headerShown: false,
-      contentStyle: { 
-          flex: 1, 
-          justifyContent: 'center', 
-          backgroundColor: 'white', 
-          paddingHorizontal: 24 
-        }
     }}
     
   >

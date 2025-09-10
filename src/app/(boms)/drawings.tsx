@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Assets = () => {
+const Drawing = () => {
   return (
     <View className='flex-1 justify-center items-center'>
-      <Text>Assets</Text>
+      <Text>Drawing</Text>
     </View>
   )
 }
 
-export default Assets
+export default Drawing
