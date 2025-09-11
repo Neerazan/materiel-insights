@@ -1,5 +1,6 @@
-import { View, Text, Image, SafeAreaView } from "react-native";
+import { View, Text, Image } from "react-native";
 import { images } from "@/src/constants";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export function AuthContentLayout({ children } : { children: React.ReactNode }) {
   return (
