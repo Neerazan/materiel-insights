@@ -11,6 +11,7 @@ const FilterView = ({
   filterable = true,
   cardView,
   listView,
+  filterConfig = [],
 }: any) => {
   const [isListView, setIsListView] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -82,6 +83,7 @@ const FilterView = ({
       <FilterModal
         visible={showFilters}
         onClose={() => setShowFilters(false)}
+        filterConfig={filterConfig}
       />
     </SafeAreaView>
   );

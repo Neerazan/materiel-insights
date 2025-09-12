@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // or your preferred icon library
-import cn from 'clsx';
+import { Ionicons } from '@expo/vector-icons';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge'
+
+type Props = {
+    placeholder?: string;
+    value: string;
+    onChangeText: (text: string) => void;
+    label?: string;
+    secureTextEntry?: boolean;
+    keyboardType?: "default" | "numeric" | "email-address" | "phone-pad" | "ascii-capable" | "numbers-and-punctuation" | "url" | "number-pad" | "name-phone-pad" | "decimal-pad" | "twitter" | "web-search" | "visible-password";
+    required?: boolean;
+    showError?: boolean;
+    styles?: string;
+}
+
+const cn = (...inputs: any[]) => {
+    return twMerge(clsx(inputs));
+}
 
 const CustomInput = ({
     placeholder = 'Enter text',
@@ -12,25 +29,41 @@ const CustomInput = ({
     keyboardType = "default",
     required = false,
     showError = false,
-} : any) => {
+    styles = '',
+}: Props) => {
     const [isFocused, setIsFocused] = useState(false);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    
+
     const togglePasswordVisibility = () => {
         setIsPasswordVisible(!isPasswordVisible);
     };
-    
+
     const shouldShowPassword = secureTextEntry && !isPasswordVisible;
+
+    const getInputClasses = () => {
+        const baseClasses = 'w-full px-4 py-1 text-base bg-white rounded-lg border-2 focus:outline-none transition-colors duration-200';
+
+        const conditionalClasses = cn(
+            isFocused
+                ? 'border-blue-500 bg-blue-50'
+                : showError
+                    ? 'border-red-500'
+                    : 'border-gray-300',
+            secureTextEntry && 'pr-12'
+        );
+
+        return cn(baseClasses, conditionalClasses, styles);
+    };
 
     return (
         <View className="w-full mb-4">
             {/* Label */}
             <Text className="text-gray-700 text-base font-medium mb-2">
-                {label} 
+                {label}
                 {required && <Text className="text-red-500 ml-1">*</Text>}
                 {required && <Text className="text-gray-400 text-sm font-normal">(Required)</Text>}
             </Text>
-            
+
             {/* Input Container */}
             <View className="relative">
                 <TextInput
@@ -44,21 +77,12 @@ const CustomInput = ({
                     onBlur={() => setIsFocused(false)}
                     placeholder={placeholder}
                     placeholderTextColor="#9CA3AF"
-                    className={cn(
-                        'w-full px-4 py-3 text-base bg-white rounded-lg border-2',
-                        'focus:outline-none transition-colors duration-200',
-                        isFocused 
-                            ? 'border-blue-500 bg-blue-50' 
-                            : showError 
-                                ? 'border-red-500' 
-                                : 'border-gray-200',
-                        secureTextEntry && 'pr-12'
-                    )}
+                    className={getInputClasses()}
                     style={{
                         fontFamily: 'System',
                     }}
                 />
-                
+
                 {/* Password Toggle Icon */}
                 {secureTextEntry && (
                     <TouchableOpacity

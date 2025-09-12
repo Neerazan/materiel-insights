@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native";
-
-// Types
-type FilterType = "search" | "numberRange" | "dateRange" | "dropdown" | "sort";
+import { FlatList, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { FilterType } from "../constants/static.list";
+import CustomInput from "./custom-input";
 
 type FilterField = {
-  id: string;
   label: string;
-  type: FilterType;
+  filterType: FilterType;
+  name: string;
+  placeholder: string;
   options?: string[];
 };
 
@@ -25,44 +25,50 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
   };
 
   const renderFilter = (field: FilterField, index: number) => {
-    switch (field.type) {
-      case "search":
+    switch (field.filterType) {
+      case FilterType.Search:
         return (
           <View key={index} className="mb-4">
-            <Text className="mb-1 font-semibold">{field.label}</Text>
-            <TextInput
-              className="border rounded-lg px-3 py-2"
-              placeholder={`Search ${field.label}`}
+            <CustomInput
+              label={field.label}
+              placeholder={field.placeholder}
               value={values[index] || ""}
-              onChangeText={(text) => handleChange(index, text)}
+              onChangeText={(text: string) => handleChange(index, text)}
+              styles="py-2 rounded-[5px]"
             />
           </View>
         );
 
-      case "numberRange":
+      case FilterType.NumberRange:
         return (
           <View key={index} className="mb-4">
-            <Text className="mb-1 font-semibold">{field.label}</Text>
-            <View className="flex-row space-x-2">
-              <TextInput
-                className="border rounded-lg px-3 py-2 flex-1"
-                placeholder="Min"
-                keyboardType="numeric"
-                value={values[`${index}_min`] || ""}
-                onChangeText={(text) => handleChange(`${index}_min`, text)}
-              />
-              <TextInput
-                className="border rounded-lg px-3 py-2 flex-1"
-                placeholder="Max"
-                keyboardType="numeric"
-                value={values[`${index}_max`] || ""}
-                onChangeText={(text) => handleChange(`${index}_max`, text)}
-              />
+            <Text className="text-gray-700 text-base font-medium mb-2">{field.label}</Text>
+            <View className="flex-row gap-4">
+              <View className="flex-1">
+                <CustomInput
+                  label="Min"
+                  placeholder={"Enter min value"}
+                  value={values[`${index}_min`] || ""}
+                  onChangeText={(text) => handleChange(`${index}_min`, text)}
+                  keyboardType="numeric"
+                  styles="rounded-[5px] py-1"
+                />
+              </View>
+              <View className="flex-1">
+                <CustomInput
+                  label="Max"
+                  placeholder={"Enter max value"}
+                  value={values[`${index}_max`] || ""}
+                  onChangeText={(text) => handleChange(`${index}_max`, text)}
+                  keyboardType="numeric"
+                  styles="rounded-[5px] py-1"
+                />
+              </View>
             </View>
           </View>
         );
 
-      case "dateRange":
+      case FilterType.DateRange:
         return (
           <View key={index} className="mb-4">
             <Text className="mb-1 font-semibold">{field.label}</Text>
@@ -83,7 +89,7 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
           </View>
         );
 
-      case "dropdown":
+      case FilterType.Dropdown:
         return (
           <View key={index} className="mb-4">
             <Text className="mb-1 font-semibold">{field.label}</Text>
@@ -94,10 +100,10 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
               renderItem={({ item }) => (
                 <TouchableOpacity
                   onPress={() => handleChange(index, item)}
-                  className={`px-3 py-2 border rounded-lg mr-2 ${values[index] === item ? "bg-blue-500" : ""
+                  className={`px-3 py-2 border border-gray-400 rounded-[5px] mr-2 ${values[index] === item ? "bg-blue-500 border-blue-500" : ""
                     }`}
                 >
-                  <Text className={values[index] === item ? "text-white" : ""}>
+                  <Text className={values[index] === item ? "text-white" : "text-gray-600"}>
                     {item}
                   </Text>
                 </TouchableOpacity>
@@ -106,21 +112,22 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
           </View>
         );
 
-      case "sort":
+      case FilterType.Sort:
         return (
           <View key={index} className="mb-4">
             <Text className="mb-1 font-semibold">{field.label}</Text>
             <FlatList
               horizontal
+              showsHorizontalScrollIndicator={false}
               data={field.options || []}
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity
                   onPress={() => handleChange(index, item)}
-                  className={`px-3 py-2 border rounded-lg mr-2 ${values[index] === item ? "bg-green-500" : ""
+                  className={`px-3 py-2 border border-gray-400 rounded-[5px] mr-2 ${values[index] === item ? "bg-blue-500 border-blue-500" : ""
                     }`}
                 >
-                  <Text className={values[index] === item ? "text-white" : ""}>
+                  <Text className={values[index] === item ? "text-white" : "text-gray-600"}>
                     {item}
                   </Text>
                 </TouchableOpacity>
@@ -139,7 +146,7 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
       <FlatList
         data={filters}
         renderItem={({ item, index }) => renderFilter(item, index)}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.label}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
