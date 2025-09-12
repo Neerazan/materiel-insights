@@ -41,7 +41,7 @@ const CustomInput = ({
     const shouldShowPassword = secureTextEntry && !isPasswordVisible;
 
     const getInputClasses = () => {
-        const baseClasses = 'w-full px-4 py-1 text-base bg-white rounded-lg border-2 focus:outline-none transition-colors duration-200';
+        const baseClasses = 'w-full px-4 py-1 text-base bg-white rounded-lg border-2 focus:outline-none';
 
         const conditionalClasses = cn(
             isFocused

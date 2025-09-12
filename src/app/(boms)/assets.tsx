@@ -1,4 +1,4 @@
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import { Button } from '@react-navigation/elements'
 import { useAuthStore } from '@/src/store/auth.store'

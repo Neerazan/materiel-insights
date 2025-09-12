@@ -5,22 +5,6 @@ import PartCard from "../features/parts/part-card";
 import PartList from "../features/parts/part-list";
 import { FilterType } from "@/src/constants/static.list";
 
-// {
-//   "r_num": 2,
-//     "partNumber": "PN-10002",
-//       "cageCode": "2C45D",
-//         "name": "Fuel Control Valve",
-//           "distributionStatement": "Restricted to DoD use only",
-//             "nsn": "2345-01-678-9012",
-//               "uoc": "UOC-02",
-//                 "quantity": "20",
-//                   "status": "On Order",
-//                     "supplierName": "DefenseParts Co.",
-//                       "leadTime": "30 days",
-//                         "cost": "$850",
-//                           "source": "ExcelOrCSVImport"
-// },
-
 const PartFilterConfig = [
   {
     label: "Part Name",
