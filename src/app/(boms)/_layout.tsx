@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { FontAwesome6, FontAwesome } from '@expo/vector-icons';
 
 export default function BoMLayout() {
   return (
@@ -15,10 +15,10 @@ export default function BoMLayout() {
             title: 'Parts',
             headerShown: false,
             tabBarIcon: ({ color, focused }) =>
-              <Ionicons
-                name={focused ? 'cog' : "cog-outline"}
+              <FontAwesome
+                name={'cog'}
                 size={24}
-                color={color}
+                color={focused ? '#3B82F6' : color}
               />
           }}
         />
@@ -27,10 +27,10 @@ export default function BoMLayout() {
           options={{
             title: 'Assets',
             headerShown: false,
-            tabBarIcon: ({ color, focused }) => <Ionicons
-              name={focused ? 'tablet-landscape' : "tablet-landscape-outline"}
+            tabBarIcon: ({ color, focused }) => <FontAwesome
+              name={'table'}
               size={24}
-              color={color}
+              color={focused ? '#3B82F6' : color}
             />
           }}
         />
@@ -39,10 +39,10 @@ export default function BoMLayout() {
           options={{
             title: 'Drawings',
             headerShown: false,
-            tabBarIcon: ({ color, focused }) => <Ionicons
-              name={focused ? 'compass' : "compass-outline"}
+            tabBarIcon: ({ color, focused }) => <FontAwesome6
+              name={'compass-drafting'}
               size={24}
-              color={color}
+              color={focused ? '#3B82F6' : color}
             />
           }}
         />
@@ -51,10 +51,10 @@ export default function BoMLayout() {
           options={{
             title: 'Structure',
             headerShown: false,
-            tabBarIcon: ({ color, focused }) => <Ionicons
-              name={focused ? 'add-circle' : "add-circle-outline"}
+            tabBarIcon: ({ color, focused }) => <FontAwesome6
+              name={'folder-tree'}
               size={24}
-              color={color}
+              color={focused ? '#3B82F6' : color}
             />
           }}
         />

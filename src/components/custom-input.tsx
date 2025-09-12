@@ -8,6 +8,7 @@ type Props = {
     placeholder?: string;
     value: string;
     onChangeText: (text: string) => void;
+    onBlur?: () => void;
     label?: string;
     secureTextEntry?: boolean;
     keyboardType?: "default" | "numeric" | "email-address" | "phone-pad" | "ascii-capable" | "numbers-and-punctuation" | "url" | "number-pad" | "name-phone-pad" | "decimal-pad" | "twitter" | "web-search" | "visible-password";
@@ -24,6 +25,7 @@ const CustomInput = ({
     placeholder = 'Enter text',
     value,
     onChangeText,
+    onBlur,
     label = 'label',
     secureTextEntry = false,
     keyboardType = "default",
@@ -41,7 +43,7 @@ const CustomInput = ({
     const shouldShowPassword = secureTextEntry && !isPasswordVisible;
 
     const getInputClasses = () => {
-        const baseClasses = 'w-full px-4 py-1 text-base bg-white rounded-lg border-2 focus:outline-none';
+        const baseClasses = 'w-full px-4 py-3 text-base bg-white rounded-lg border-2 focus:outline-none';
 
         const conditionalClasses = cn(
             isFocused
