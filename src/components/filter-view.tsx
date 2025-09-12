@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, FlatList, } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import FilterModal from '@/src/components/filter-model';
+import { Feather, Ionicons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const FilterView = ({
   data = [],
@@ -33,10 +33,11 @@ const FilterView = ({
               {filterable && (
                 <TouchableOpacity
                   className={`p-2 rounded-lg ${showFilters ? 'bg-blue-100' : 'bg-gray-100'}`}
+                  activeOpacity={1}
                   onPress={() => setShowFilters(!showFilters)}
                 >
-                  <Ionicons
-                    name="filter-outline"
+                  <Feather
+                    name="filter"
                     size={18}
                     color={showFilters ? "#3B82F6" : "#6B7280"}
                   />
@@ -44,6 +45,7 @@ const FilterView = ({
               )}
               <TouchableOpacity
                 className={`p-2 rounded-lg ml-2 ${isListView ? 'bg-blue-100' : 'bg-gray-100'}`}
+                activeOpacity={1}
                 onPress={() => setIsListView(!isListView)}
               >
                 <Ionicons

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge'
+import React, { useState } from 'react';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
     placeholder?: string;

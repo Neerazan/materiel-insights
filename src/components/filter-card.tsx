@@ -24,16 +24,16 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
     setValues((prev) => ({ ...prev, [key]: value }));
   };
 
-  const renderFilter = (field: FilterField, index: number) => {
+  const renderFilter = (field: FilterField) => {
     switch (field.filterType) {
       case FilterType.Search:
         return (
-          <View key={index} className="mb-4">
+          <View key={field.name} className="mb-4">
             <CustomInput
               label={field.label}
               placeholder={field.placeholder}
-              value={values[index] || ""}
-              onChangeText={(text: string) => handleChange(index, text)}
+              value={values[field.name] || ""}
+              onChangeText={(text: string) => handleChange(field.name, text)}
               styles="py-2 rounded-[5px]"
             />
           </View>
@@ -41,15 +41,15 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
 
       case FilterType.NumberRange:
         return (
-          <View key={index} className="mb-4">
+          <View key={field.name} className="mb-4">
             <Text className="text-gray-700 text-base font-medium mb-2">{field.label}</Text>
             <View className="flex-row gap-4">
               <View className="flex-1">
                 <CustomInput
                   label="Min"
                   placeholder={"Enter min value"}
-                  value={values[`${index}_min`] || ""}
-                  onChangeText={(text) => handleChange(`${index}_min`, text)}
+                  value={values[`${field.name}_min`] || ""}
+                  onChangeText={(text) => handleChange(`${field.name}_min`, text)}
                   keyboardType="numeric"
                   styles="rounded-[5px] py-1"
                 />
@@ -58,8 +58,8 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
                 <CustomInput
                   label="Max"
                   placeholder={"Enter max value"}
-                  value={values[`${index}_max`] || ""}
-                  onChangeText={(text) => handleChange(`${index}_max`, text)}
+                  value={values[`${field.name}_max`] || ""}
+                  onChangeText={(text) => handleChange(`${field.name}_max`, text)}
                   keyboardType="numeric"
                   styles="rounded-[5px] py-1"
                 />
@@ -70,20 +70,20 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
 
       case FilterType.DateRange:
         return (
-          <View key={index} className="mb-4">
+          <View key={field.name} className="mb-4">
             <Text className="mb-1 font-semibold">{field.label}</Text>
             <View className="flex-row space-x-2">
               <TextInput
                 className="border rounded-lg px-3 py-2 flex-1"
                 placeholder="From (YYYY-MM-DD)"
-                value={values[`${index}_from`] || ""}
-                onChangeText={(text) => handleChange(`${index}_from`, text)}
+                value={values[`${field.name}_from`] || ""}
+                onChangeText={(text) => handleChange(`${field.name}_from`, text)}
               />
               <TextInput
                 className="border rounded-lg px-3 py-2 flex-1"
                 placeholder="To (YYYY-MM-DD)"
-                value={values[`${index}_to`] || ""}
-                onChangeText={(text) => handleChange(`${index}_to`, text)}
+                value={values[`${field.name}_to`] || ""}
+                onChangeText={(text) => handleChange(`${field.name}_to`, text)}
               />
             </View>
           </View>
@@ -91,7 +91,7 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
 
       case FilterType.Dropdown:
         return (
-          <View key={index} className="mb-4">
+          <View key={field.name} className="mb-4">
             <Text className="mb-1 font-semibold">{field.label}</Text>
             <FlatList
               horizontal
@@ -99,11 +99,16 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity
-                  onPress={() => handleChange(index, item)}
-                  className={`px-3 py-2 border border-gray-400 rounded-[5px] mr-2 ${values[index] === item ? "bg-blue-500 border-blue-500" : ""
+                  activeOpacity={1}
+                  onPress={() => (
+                    values[field.name] === item ?
+                      handleChange(field.name, "") :
+                      handleChange(field.name, item)
+                  )}
+                  className={`px-3 py-2 border rounded-[5px] mr-2 ${values[field.name] === item ? "bg-blue-500 border-blue-500" : "border-gray-400"
                     }`}
                 >
-                  <Text className={values[index] === item ? "text-white" : "text-gray-600"}>
+                  <Text className={values[field.name] === item ? "text-white" : "text-gray-600"}>
                     {item}
                   </Text>
                 </TouchableOpacity>
@@ -114,7 +119,7 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
 
       case FilterType.Sort:
         return (
-          <View key={index} className="mb-4">
+          <View key={field.name} className="mb-4">
             <Text className="mb-1 font-semibold">{field.label}</Text>
             <FlatList
               horizontal
@@ -123,11 +128,16 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
               keyExtractor={(item) => item}
               renderItem={({ item }) => (
                 <TouchableOpacity
-                  onPress={() => handleChange(index, item)}
-                  className={`px-3 py-2 border border-gray-400 rounded-[5px] mr-2 ${values[index] === item ? "bg-blue-500 border-blue-500" : ""
+                  activeOpacity={1}
+                  onPress={() => (
+                    values[field.name] === item ?
+                      handleChange(field.name, "") :
+                      handleChange(field.name, item)
+                  )}
+                  className={`px-3 py-2 border rounded-[5px] mr-2 ${values[field.name] === item ? "bg-blue-500 border-blue-500" : "border-gray-400"
                     }`}
                 >
-                  <Text className={values[index] === item ? "text-white" : "text-gray-600"}>
+                  <Text className={values[field.name] === item ? "text-white" : "text-gray-600"}>
                     {item}
                   </Text>
                 </TouchableOpacity>
@@ -145,8 +155,8 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
     <View className="flex-1 p-4 bg-white">
       <FlatList
         data={filters}
-        renderItem={({ item, index }) => renderFilter(item, index)}
-        keyExtractor={(item) => item.label}
+        renderItem={({ item }) => renderFilter(item)}
+        keyExtractor={(item) => item.name}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
