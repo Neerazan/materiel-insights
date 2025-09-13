@@ -4,9 +4,9 @@ import parts from "@/assets/icons/cogs.png";
 import structure from "@/assets/icons/structure.png";
 import drawings from "@/assets/icons/compass.png";
 
-
 export const partsData = [
   {
+    "id": "1e7f3a2e-8c4b-5d6f-9a1b-2c3d4e5f6a7b",
     "r_num": 1,
     "partNumber": "PN-10001",
     "cageCode": "1A23B",
@@ -22,6 +22,7 @@ export const partsData = [
     "source": "UserCreated"
   },
   {
+    "id": "2b8f4c3d-9d5e-6f7a-0b1c-3d4e5f6a7b8c",
     "r_num": 2,
     "partNumber": "PN-10002",
     "cageCode": "2C45D",
@@ -37,6 +38,7 @@ export const partsData = [
     "source": "ExcelOrCSVImport"
   },
   {
+    "id": "3c9f5d4e-0e6f-7a8b-1c2d-4e5f6a7b8c9d",
     "r_num": 3,
     "partNumber": "PN-10003",
     "cageCode": "3E56F",
@@ -52,6 +54,7 @@ export const partsData = [
     "source": "UserCreated"
   },
   {
+    "id": "4d0f6e5f-1f7a-8b9c-2d3e-5f6a7b8c9d0e",
     "r_num": 4,
     "partNumber": "PN-10004",
     "cageCode": "4G67H",
@@ -67,6 +70,7 @@ export const partsData = [
     "source": "UserCreated"
   },
   {
+    "id": "5e1f7g6h-2g8b-9c0d-3e4f-6a7b8c9d0e1f",
     "r_num": 5,
     "partNumber": "PN-10005",
     "cageCode": "5I78J",
@@ -82,6 +86,7 @@ export const partsData = [
     "source": "ExcelOrCSVImport"
   },
   {
+    "id": "6f2g8h7i-3h9c-0d1e-4f5g-7b8c9d0e1f2g",
     "r_num": 6,
     "partNumber": "PN-10006",
     "cageCode": "6K89L",
@@ -97,6 +102,7 @@ export const partsData = [
     "source": "UserCreated"
   },
   {
+    "id": "7g3h9i8j-4i0d-1e2f-5g6h-8c9d0e1f2g3h",
     "r_num": 7,
     "partNumber": "PN-10007",
     "cageCode": "7M90N",
@@ -112,6 +118,7 @@ export const partsData = [
     "source": "ExcelOrCSVImport"
   },
   {
+    "id": "8h4i0j9k-5j1e-2f3g-6h7i-9d0e1f2g3h4i",
     "r_num": 8,
     "partNumber": "PN-10008",
     "cageCode": "8O12P",
@@ -127,6 +134,7 @@ export const partsData = [
     "source": "UserCreated"
   },
   {
+    "id": "9i5j1k0l-6k2f-3g4h-7i8j-0e1f2g3h4i5j",
     "r_num": 9,
     "partNumber": "PN-10009",
     "cageCode": "9Q23R",
@@ -142,6 +150,7 @@ export const partsData = [
     "source": "ExcelOrCSVImport"
   },
   {
+    "id": "0j6k2l1m-7l3g-4h5i-8j9k-1f2g3h4i5j6k",
     "r_num": 10,
     "partNumber": "PN-10010",
     "cageCode": "0S34T",

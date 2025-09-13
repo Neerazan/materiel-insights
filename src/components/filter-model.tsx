@@ -1,18 +1,16 @@
 import React from "react";
 import { Modal, Pressable, Text, TouchableOpacity, View } from "react-native";
 import FilterCard from "./filter-card";
+import { FilterConfig } from "../constants/types";
 
 type Props = {
   visible: boolean;
   onClose: () => void;
-  filterConfig: {
-    label: string;
-    type: string; 
-    options?: string[];
-  }[];
+  onFilter: (values: any) => void;
+  filterConfig: FilterConfig[];
 };
 
-export default function FilterModal({ visible, onClose, filterConfig }: Props) {
+export default function FilterModal({ visible, onClose, filterConfig, onFilter }: Props) {
   return (
     <Modal
       visible={visible}
@@ -32,7 +30,7 @@ export default function FilterModal({ visible, onClose, filterConfig }: Props) {
           <FilterCard
             filters={filterConfig as any}
             onApply={(values) => {
-              console.log("Applied Filters:", values);
+              onFilter(values);
               onClose();
             }}
             onReset={() => console.log("Filters Reset")}

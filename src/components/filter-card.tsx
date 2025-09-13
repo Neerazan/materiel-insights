@@ -117,35 +117,6 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
           </View>
         );
 
-      case FilterType.Sort:
-        return (
-          <View key={field.name} className="mb-4">
-            <Text className="mb-1 font-semibold">{field.label}</Text>
-            <FlatList
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={field.options || []}
-              keyExtractor={(item) => item}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  activeOpacity={1}
-                  onPress={() => (
-                    values[field.name] === item ?
-                      handleChange(field.name, "") :
-                      handleChange(field.name, item)
-                  )}
-                  className={`px-3 py-2 border rounded-[5px] mr-2 ${values[field.name] === item ? "bg-blue-500 border-blue-500" : "border-gray-400"
-                    }`}
-                >
-                  <Text className={values[field.name] === item ? "text-white" : "text-gray-600"}>
-                    {item}
-                  </Text>
-                </TouchableOpacity>
-              )}
-            />
-          </View>
-        );
-
       default:
         return null;
     }

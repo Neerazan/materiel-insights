@@ -3,8 +3,21 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import useFilter from '../hooks/use-filter';
+import { FilterConfig } from '../constants/types';
 
-const FilterView = ({
+
+interface FilterViewProps<T> {
+  data: T[];
+  title?: string;
+  onAddItem?: () => void;
+  filterable?: boolean;
+  cardView: (item: T) => React.ReactElement;
+  listView: (item: T) => React.ReactElement;
+  filterConfig?: FilterConfig[];
+}
+
+function FilterView<T extends { id: string }>({
   data = [],
   title = "Item Name",
   onAddItem,
@@ -12,12 +25,18 @@ const FilterView = ({
   cardView,
   listView,
   filterConfig = [],
-}: any) => {
+}: FilterViewProps<T>) {
   const [isListView, setIsListView] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState<any[]>([]);
+  const { filteredItems } = useFilter<T>(data, filterConfig, filters);
 
   const numColumns = isListView ? 1 : 2;
   const renderItemFunction = isListView ? listView : cardView;
+
+  const onFilter = (values: any) => {
+    setFilters(values)
+  }
 
   return (
     <SafeAreaView
@@ -62,9 +81,9 @@ const FilterView = ({
       {/* Content Area */}
       <View className="flex-1">
         <FlatList
-          data={data}
+          data={filteredItems}
           key={numColumns}
-          keyExtractor={(item) => item.r_num as unknown as string}
+          keyExtractor={(item) => item.id }
           numColumns={numColumns}
           columnWrapperStyle={numColumns > 1 ? { justifyContent: "space-between" } : null}
           showsVerticalScrollIndicator={false}
@@ -86,6 +105,7 @@ const FilterView = ({
         visible={showFilters}
         onClose={() => setShowFilters(false)}
         filterConfig={filterConfig}
+        onFilter={onFilter}
       />
     </SafeAreaView>
   );

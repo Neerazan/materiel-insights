@@ -45,7 +45,6 @@ const DefaultCard = ({
       onPress={handleCardPress}
       activeOpacity={0.7}
     >
-      {/* Header with Icon or Image - Fixed aspect ratio */}
       <View
         className="items-center justify-center mb-3 bg-gray-50 rounded-lg"
         style={{ aspectRatio: 19 / 9, minHeight: 80 }}
@@ -57,7 +56,6 @@ const DefaultCard = ({
           />
       </View>
 
-      {/* Title */}
       <Text
         className="text-base font-semibold text-gray-800 mb-3 capitalize"
         numberOfLines={2}
@@ -66,7 +64,6 @@ const DefaultCard = ({
         {title || 'Untitled Item'}
       </Text>
 
-      {/* Card Body */}
       <View className="flex-1 mb-3">
         {Object.entries(cardBody).map(([key, value]) => {
           if (!value && value !== 0) return null;
@@ -84,7 +81,6 @@ const DefaultCard = ({
         })}
       </View>
 
-      {/* Action Buttons - Fixed at bottom */}
       <View className="flex-row justify-between" style={{ height: 36 }}>
         <TouchableOpacity
           className="flex-1 bg-blue-50 border border-blue-500 rounded-md justify-center items-center mx-1"
