@@ -7,7 +7,6 @@ export default function ConsentScreen() {
   const { setTermsAccepted } = useAuthStore();
 
   const handleDisagree = () => {
-    // Handle disagree action - maybe exit app or show warning
     console.log("User disagreed to terms");
   };
 

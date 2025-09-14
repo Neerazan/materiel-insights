@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { icons } from '../constants';
 
 type Props = {
   title: string;
-  imageUrl?: string;
+  cardImage: ImageSourcePropType;
   iconName?: string;
   cardBody?: Record<string, any>;
   onPress?: () => void;
@@ -25,7 +24,7 @@ const camelCaseToTitleCase = (str: string) => {
 
 const DefaultCard = ({
   title,
-  imageUrl,
+  cardImage,
   cardBody = {},
   onPress,
   onEdit,
@@ -39,8 +38,6 @@ const DefaultCard = ({
     }
   };
 
-  console.log('Image URL:', imageUrl);
-
   return (
     <TouchableOpacity
       className="bg-white rounded-lg p-4 mx-1 mb-4 flex-1 justify-center"
@@ -53,7 +50,7 @@ const DefaultCard = ({
         style={{ aspectRatio: 19 / 9, minHeight: 80 }}
       >
           <Image
-            source={imageUrl}
+            source={cardImage}
             className="w-full h-full rounded-lg"
             resizeMode="contain"
           />

@@ -3,13 +3,11 @@ import { icons } from "@/src/constants";
 import { Part } from "@/src/constants/types";
 import { ReactElement } from "react";
 
-console.log('Icons object:', icons);
-
 export default function PartCard(dataItem: Part): ReactElement {
   return (
     <DefaultCard
       title={dataItem?.name}
-      imageUrl={icons.parts}
+      cardImage={icons.parts}
       cardBody={{
         "Part Number": dataItem?.partNumber,
         "CAGE Code": dataItem?.cageCode,
