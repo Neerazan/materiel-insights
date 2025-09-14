@@ -1,12 +1,21 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import FilterView from "@/src/components/filter-view";
+import { drawingData } from "@/src/constants";
+import { Alert } from "react-native";
+import DrawingCard from "@/src/features/drawings/drawing-card";
+import DrawingList from "@/src/features/drawings/drawing-list";
+import { Drawing } from "@/src/constants/types";
+import { drawingFilterConfig } from "@/src/features/drawings/filter-config";
 
-const Drawing = () => {
+export default function Drawings() {
   return (
-    <View className='flex-1 justify-center items-center'>
-      <Text>Drawing</Text>
-    </View>
-  )
+    <FilterView<Drawing>
+      data={drawingData}
+      title="Parts"
+      filterable={true}
+      onAddItem={() => { Alert.alert("Add Part", "Add part button pressed") }}
+      cardView={DrawingCard}
+      listView={DrawingList}
+      filterConfig={drawingFilterConfig}
+    />
+  );
 }
-
-export default Drawing

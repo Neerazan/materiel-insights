@@ -24,3 +24,10 @@ export interface Part {
   cost: string
   source: string
 }
+
+export interface Drawing {
+  id: string
+  number: string
+  name: string
+  description: string
+}
