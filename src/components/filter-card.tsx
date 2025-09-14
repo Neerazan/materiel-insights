@@ -15,10 +15,11 @@ type Props = {
   filters: FilterField[];
   onApply: (values: Record<string, any>) => void;
   onReset?: () => void;
+  initialValues?: Record<string, any>;
 };
 
-export default function FilterCard({ filters, onApply, onReset }: Props) {
-  const [values, setValues] = useState<Record<string, any>>({});
+export default function FilterCard({ filters, onApply, onReset, initialValues = {} }: Props) {
+  const [values, setValues] = useState<Record<string, any>>(initialValues);
 
   const handleChange = (key: number | string, value: any) => {
     setValues((prev) => ({ ...prev, [key]: value }));

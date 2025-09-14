@@ -3,8 +3,8 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import useFilter from '../hooks/use-filter';
 import { FilterConfig } from '../constants/types';
+import useFilter from '../hooks/use-filter';
 
 
 interface FilterViewProps<T> {
@@ -28,8 +28,8 @@ function FilterView<T extends { id: string }>({
 }: FilterViewProps<T>) {
   const [isListView, setIsListView] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
-  const [filters, setFilters] = useState<any[]>([]);
-  
+  const [filters, setFilters] = useState<Record<string, any>>({});
+
   const { filteredItems } = useFilter<T>(data, filterConfig, filters);
 
   const numColumns = isListView ? 1 : 2;
@@ -93,7 +93,7 @@ function FilterView<T extends { id: string }>({
         <FlatList
           data={filteredItems}
           key={numColumns}
-          keyExtractor={(item) => item.id }
+          keyExtractor={(item) => item.id}
           numColumns={numColumns}
           columnWrapperStyle={numColumns > 1 ? { justifyContent: "space-between" } : null}
           showsVerticalScrollIndicator={false}
@@ -117,6 +117,7 @@ function FilterView<T extends { id: string }>({
         filterConfig={filterConfig}
         onFilter={onFilter}
         onReset={onReset}
+        currentFilters={filters}
       />
     </SafeAreaView>
   );
