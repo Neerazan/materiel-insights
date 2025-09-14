@@ -29,6 +29,7 @@ function FilterView<T extends { id: string }>({
   const [isListView, setIsListView] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<any[]>([]);
+  
   const { filteredItems } = useFilter<T>(data, filterConfig, filters);
 
   const numColumns = isListView ? 1 : 2;
