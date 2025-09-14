@@ -35,7 +35,7 @@ function FilterView<T extends { id: string }>({
   const numColumns = isListView ? 1 : 2;
   const renderItemFunction = isListView ? listView : cardView;
 
-  const onFilter = (values: any) => {
+  const onFilter = (values: Record<string, string>) => {
     setFilters(values)
   }
 

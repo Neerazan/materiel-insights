@@ -4,6 +4,57 @@ import parts from "@/assets/icons/cogs.png";
 import structure from "@/assets/icons/structure.png";
 import drawings from "@/assets/icons/compass.png";
 
+export const drawingData = [
+  {
+    "id": "1e7f3a2e-8c4b-5d6f-9a1b-2c3d4e5f6a7b",
+    "number": "Drawing-1",
+    "name": "Hydraulic Pump Assembly",
+    "description": "This is a drawing of the hydraulic pump assembly",
+  },
+  {
+    "id": "2b8f4c3d-9d5e-6f7a-0b1c-3d4e5f6a7b8c",
+    "number": "Drawing-2",
+    "name": "Fuel Control Valve",
+    "description": "This is a drawing of the fuel control valve",
+  },
+  {
+    "id": "3c9f5d4e-0e6f-7a8b-1c2d-4e5f6a7b8c9d",
+    "number": "Drawing-3",
+    "name": "Landing Gear Strut",
+    "description": "This is a drawing of the landing gear strut",
+  },
+  {
+    "id": "4d0f6e5f-1f7a-8b9c-2d3e-5f6a7b8c9d0e",
+    "number": "Drawing-4",
+    "name": "Avionics Control Panel",
+    "description": "This is a drawing of the avionics control panel",
+  },
+  {
+    "id": "5e1f7g6h-2g8b-9c0d-3e4f-6a7b8c9d0e1f",
+    "number": "Drawing-5",
+    "name": "Engine Turbine Blade",
+    "description": "This is a drawing of the engine turbine blade",
+  },
+  {
+    "id": "6f2g8h7i-3h9c-0d1e-4f5g-7b8c9d0e1f2g",
+    "number": "Drawing-6",
+    "name": "Oxygen Supply Regulator",
+    "description": "This is a drawing of the oxygen supply regulator",
+  },
+  {
+    "id": "7g3h9i8j-4i0d-1e2f-5g6h-8c9d0e1f2g3h",
+    "number": "Drawing-7",
+    "name": "Cockpit Display Unit",
+    "description": "This is a drawing of the cockpit display unit",
+  },
+  {
+    "id": "8h4i0j9k-5j1e-2f3g-6h7i-9d0e1f2g3h4i",
+    "number": "Drawing-8",
+    "name": "Electronic Power Module",
+    "description": "This is a drawing of the electronic power module",
+  }
+]
+
 export const partsData = [
   {
     "id": "1e7f3a2e-8c4b-5d6f-9a1b-2c3d4e5f6a7b",

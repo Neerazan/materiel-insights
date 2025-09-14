@@ -39,18 +39,21 @@ const DefaultCard = ({
     }
   };
 
+  console.log('Image URL:', imageUrl);
+
   return (
     <TouchableOpacity
-      className="bg-white rounded-lg p-4 mx-1 mb-4 shadow-md flex-1 justify-center"
+      className="bg-white rounded-lg p-4 mx-1 mb-4 flex-1 justify-center"
       onPress={handleCardPress}
       activeOpacity={0.7}
+      style={{ boxShadow: '0 5px 3px rgba(0,0,0,0.1)' }}
     >
       <View
         className="items-center justify-center mb-3 bg-gray-50 rounded-lg"
         style={{ aspectRatio: 19 / 9, minHeight: 80 }}
       >
           <Image
-            source={icons.parts}
+            source={imageUrl}
             className="w-full h-full rounded-lg"
             resizeMode="contain"
           />

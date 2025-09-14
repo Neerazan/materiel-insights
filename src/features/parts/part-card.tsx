@@ -3,7 +3,9 @@ import { icons } from "@/src/constants";
 import { Part } from "@/src/constants/types";
 import { ReactElement } from "react";
 
-export default function PartCard(dataItem: Part) : ReactElement {
+console.log('Icons object:', icons);
+
+export default function PartCard(dataItem: Part): ReactElement {
   return (
     <DefaultCard
       title={dataItem?.name}

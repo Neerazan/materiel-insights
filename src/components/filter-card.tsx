@@ -12,14 +12,14 @@ type FilterField = {
 };
 
 type Props = {
-  filters: FilterField[];
-  onApply: (values: Record<string, any>) => void;
+  filterConfig: FilterField[];
+  onApply: (values: Record<string, string>) => void;
   onReset?: () => void;
-  initialValues?: Record<string, any>;
+  initialValues?: Record<string, string>;
 };
 
-export default function FilterCard({ filters, onApply, onReset, initialValues = {} }: Props) {
-  const [values, setValues] = useState<Record<string, any>>(initialValues);
+export default function FilterCard({ filterConfig, onApply, onReset, initialValues = {} }: Props) {
+  const [values, setValues] = useState<Record<string, string>>(initialValues);
 
   const handleChange = (key: number | string, value: any) => {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -126,7 +126,7 @@ export default function FilterCard({ filters, onApply, onReset, initialValues = 
   return (
     <View className="flex-1 p-4 bg-white">
       <FlatList
-        data={filters}
+        data={filterConfig}
         renderItem={({ item }) => renderFilter(item)}
         keyExtractor={(item) => item.name}
         showsVerticalScrollIndicator={false}

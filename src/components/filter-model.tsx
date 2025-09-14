@@ -6,10 +6,10 @@ import FilterCard from "./filter-card";
 type Props = {
   visible: boolean;
   onClose: () => void;
-  onFilter: (values: any) => void;
+  onFilter: (values: Record<string, string>) => void;
   onReset: () => void;
   filterConfig: FilterConfig[];
-  currentFilters: Record<string, any>;
+  currentFilters: Record<string, string>;
 };
 
 export default function FilterModal({ visible, onClose, filterConfig, onFilter, onReset, currentFilters }: Props) {
@@ -30,7 +30,7 @@ export default function FilterModal({ visible, onClose, filterConfig, onFilter, 
             </TouchableOpacity>
           </View>
           <FilterCard
-            filters={filterConfig as any}
+            filterConfig={filterConfig}
             initialValues={currentFilters}
             onApply={(values) => {
               onFilter(values);

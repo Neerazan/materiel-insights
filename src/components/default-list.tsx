@@ -25,7 +25,8 @@ export default function DefaultListItem({
 }: DataItemProps) {
   return (
     <View
-      className="bg-white border-b border-gray-200 mx-1 shadow-md mb-1 rounded-lg"
+      className="bg-white mx-1 mb-2 rounded-lg"
+      style={{ boxShadow: '0 3px 3px rgba(0,0,0,0.1)' }}
     >
       <View className="flex-row flex-1 py-1 px-2">
         <View className="mr-4 justify-center items-center">
