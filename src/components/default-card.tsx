@@ -40,14 +40,14 @@ const DefaultCard = ({
 
   return (
     <TouchableOpacity
-      className="bg-white rounded-lg p-4 mx-1 mb-4 flex-1 justify-center"
+      className="bg-white rounded-lg p-3 mx-1 mb-4 flex-1 justify-center"
       onPress={handleCardPress}
       activeOpacity={0.7}
       style={{ boxShadow: '0 5px 3px rgba(0,0,0,0.1)' }}
     >
       <View
-        className="items-center justify-center mb-3 bg-gray-50 rounded-lg"
-        style={{ aspectRatio: 19 / 9, minHeight: 80 }}
+        className="items-center justify-center mb-3 bg-gray-50 rounded-lg py-4"
+        style={{ height: 90 }}
       >
           <Image
             source={cardImage}
@@ -57,14 +57,17 @@ const DefaultCard = ({
       </View>
 
       <Text
-        className="text-base font-semibold text-gray-800 mb-3 capitalize"
+        className="text-base font-semibold text-gray-800 capitalize"
         numberOfLines={2}
-        style={{ minHeight: 40 }}
+        style={{ height: 30 }}
       >
         {title || 'Untitled Item'}
       </Text>
 
-      <View className="flex-1 mb-3">
+      <View
+        className="flex-1 mb-3"
+        style={{ height: 120 }}
+      >
         {Object.entries(cardBody).map(([key, value]) => {
           if (!value && value !== 0) return null;
 

@@ -7,13 +7,13 @@ export default function BoMLayout() {
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: '#808080',
+          headerShown: false,
         }}
       >
         <Tabs.Screen
           name="parts"
           options={{
             title: 'Parts',
-            headerShown: false,
             tabBarIcon: ({ color, focused }) =>
               <FontAwesome
                 name={'cog'}
@@ -26,7 +26,6 @@ export default function BoMLayout() {
           name="assets"
           options={{
             title: 'Assets',
-            headerShown: false,
             tabBarIcon: ({ color, focused }) => <FontAwesome
               name={'table'}
               size={24}
@@ -38,7 +37,6 @@ export default function BoMLayout() {
           name="drawings"
           options={{
             title: 'Drawings',
-            headerShown: false,
             tabBarIcon: ({ color, focused }) => <FontAwesome6
               name={'compass-drafting'}
               size={24}
@@ -50,7 +48,6 @@ export default function BoMLayout() {
           name="structure"
           options={{
             title: 'Structure',
-            headerShown: false,
             tabBarIcon: ({ color, focused }) => <FontAwesome6
               name={'folder-tree'}
               size={24}
