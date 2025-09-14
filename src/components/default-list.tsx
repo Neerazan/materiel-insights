@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
-import { icons } from '../constants';
+import { View, Text, Image, FlatList, TouchableOpacity, ImageSourcePropType } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export type DataItemProps = {
   title?: string;
-  imageSrc?: string;
+  listImage: ImageSourcePropType;
   defaultIcon?: string;
   cardBody?: Record<string, any>;
   onClick?: () => void;
@@ -20,7 +19,7 @@ const camelCaseToTitleCase = (str: string) => {
 
 export default function DefaultListItem({
   title,
-  imageSrc,
+  listImage,
   cardBody = {},
 }: DataItemProps) {
   return (
@@ -34,19 +33,12 @@ export default function DefaultListItem({
             className="items-center justify-center bg-gray-50 rounded-lg"
             style={{ width: 48, height: 48 }}
           >
-            {imageSrc ? (
-              <Image
-                source={{ uri: imageSrc }}
-                className="w-full h-full rounded-lg"
-                resizeMode="contain"
-              />
-            ) : (
-              <Image
-                source={icons.parts}
-                className="w-8 h-8"
-                resizeMode="contain"
-              />
-            )}
+            <Image
+              source={listImage}
+              className="w-full h-full rounded-lg"
+              tintColor={'#4F4F4F'}
+              resizeMode="contain"
+            />
           </View>
         </View>
 

@@ -11,7 +11,7 @@ export default function BoMLayout() {
         }}
       >
         <Tabs.Screen
-          name="parts"
+          name="parts/index"
           options={{
             title: 'Parts',
             tabBarIcon: ({ color, focused }) =>
@@ -23,7 +23,7 @@ export default function BoMLayout() {
           }}
         />
         <Tabs.Screen
-          name="assets"
+          name="assets/index"
           options={{
             title: 'Assets',
             tabBarIcon: ({ color, focused }) => <FontAwesome
@@ -34,7 +34,7 @@ export default function BoMLayout() {
           }}
         />
         <Tabs.Screen
-          name="drawings"
+          name="drawings/index"
           options={{
             title: 'Drawings',
             tabBarIcon: ({ color, focused }) => <FontAwesome6
@@ -45,7 +45,7 @@ export default function BoMLayout() {
           }}
         />
         <Tabs.Screen
-          name="structure"
+          name="structure/index"
           options={{
             title: 'Structure',
             tabBarIcon: ({ color, focused }) => <FontAwesome6

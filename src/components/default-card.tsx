@@ -49,11 +49,12 @@ const DefaultCard = ({
         className="items-center justify-center mb-3 bg-gray-50 rounded-lg py-4"
         style={{ height: 90 }}
       >
-          <Image
-            source={cardImage}
-            className="w-full h-full rounded-lg"
-            resizeMode="contain"
-          />
+        <Image
+          source={cardImage}
+          className="w-full h-full rounded-lg"
+          resizeMode="contain"
+          tintColor={'#4F4F4F'}
+        />
       </View>
 
       <Text
