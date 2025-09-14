@@ -145,7 +145,9 @@ export default function FilterCard({ filters, onApply, onReset }: Props) {
         </TouchableOpacity>
         <TouchableOpacity
           className="px-4 py-3 rounded-lg bg-[#0D6EFD] flex-1 ml-2"
-          onPress={() => onApply(values)}
+          onPress={() => {
+            onApply(values)
+          }}
         >
           <Text className="text-center text-white font-semibold">Apply</Text>
         </TouchableOpacity>

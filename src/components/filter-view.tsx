@@ -39,6 +39,10 @@ function FilterView<T extends { id: string }>({
     setFilters(values)
   }
 
+  const onReset = () => {
+    setFilters([]);
+  }
+
   return (
     <SafeAreaView
       className="flex-1 bg-gray-50"
@@ -48,7 +52,12 @@ function FilterView<T extends { id: string }>({
       <View className="bg-white border-b border-gray-200">
         <View className="px-4 py-3">
           <View className="flex-row items-center justify-between mb-3">
-            <Text className="text-lg font-semibold text-gray-900">{title}</Text>
+            <View>
+              <Text className="text-lg font-semibold text-gray-900">{title}</Text>
+              <View className='absolute -top-2 -right-4 flex items-center justify-center size-5 bg-[#3B82F6] rounded-full'>
+                <Text className='text-xs text-white font-semibold'>{filteredItems.length}</Text>
+              </View>
+            </View>
             <View className="flex-row items-center space-x-2">
               {filterable && (
                 <TouchableOpacity
@@ -107,6 +116,7 @@ function FilterView<T extends { id: string }>({
         onClose={() => setShowFilters(false)}
         filterConfig={filterConfig}
         onFilter={onFilter}
+        onReset={onReset}
       />
     </SafeAreaView>
   );

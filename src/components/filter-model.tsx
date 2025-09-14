@@ -7,10 +7,11 @@ type Props = {
   visible: boolean;
   onClose: () => void;
   onFilter: (values: any) => void;
+  onReset: () => void;
   filterConfig: FilterConfig[];
 };
 
-export default function FilterModal({ visible, onClose, filterConfig, onFilter }: Props) {
+export default function FilterModal({ visible, onClose, filterConfig, onFilter, onReset }: Props) {
   return (
     <Modal
       visible={visible}
@@ -33,7 +34,10 @@ export default function FilterModal({ visible, onClose, filterConfig, onFilter }
               onFilter(values);
               onClose();
             }}
-            onReset={() => console.log("Filters Reset")}
+            onReset={() => {
+              onClose();
+              onReset();
+            }}
           />
         </View>
       </View>
