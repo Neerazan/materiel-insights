@@ -96,7 +96,7 @@ function FilterView<T extends { id: string }>({
           key={numColumns}
           keyExtractor={(item) => item.id}
           numColumns={numColumns}
-          columnWrapperStyle={numColumns > 1 ? { justifyContent: "space-between" } : null}
+          columnWrapperStyle={numColumns > 1 ? { justifyContent: "space-between", gap: 8 } : null}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ padding: 8 }}
           renderItem={({ item }) => renderItemFunction(item)}
