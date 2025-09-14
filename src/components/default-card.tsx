@@ -40,7 +40,7 @@ const DefaultCard = ({
 
   return (
     <TouchableOpacity
-      className="bg-white rounded-lg p-3 mx-1 mb-4 flex-1 justify-center"
+      className="bg-white rounded-lg p-3 mx-1 mb-4 justify-center w-1/2"
       onPress={handleCardPress}
       activeOpacity={0.7}
       style={{ boxShadow: '0 5px 3px rgba(0,0,0,0.1)' }}

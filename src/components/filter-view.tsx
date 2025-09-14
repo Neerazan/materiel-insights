@@ -5,11 +5,12 @@ import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FilterConfig } from '../constants/types';
 import useFilter from '../hooks/use-filter';
+import { ItemType } from '../constants/static.list';
 
 
 interface FilterViewProps<T> {
   data: T[];
-  title?: string;
+  itemType: keyof typeof ItemType;
   onAddItem?: () => void;
   filterable?: boolean;
   cardView: (item: T) => React.ReactElement;
@@ -19,7 +20,7 @@ interface FilterViewProps<T> {
 
 function FilterView<T extends { id: string }>({
   data = [],
-  title = "Item Name",
+  itemType,
   onAddItem,
   filterable = true,
   cardView,
@@ -53,7 +54,7 @@ function FilterView<T extends { id: string }>({
         <View className="px-4 py-3">
           <View className="flex-row items-center justify-between mb-3">
             <View>
-              <Text className="text-lg font-semibold text-gray-900">{title}</Text>
+              <Text className="text-lg font-semibold text-gray-900">{itemType}</Text>
               <View className='absolute -top-2 -right-4 flex items-center justify-center size-5 bg-[#3B82F6] rounded-full'>
                 <Text className='text-xs text-white font-semibold'>{filteredItems.length}</Text>
               </View>

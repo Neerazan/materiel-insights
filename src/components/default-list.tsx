@@ -30,7 +30,7 @@ export default function DefaultListItem({
       <View className="flex-row flex-1 py-1 px-2">
         <View className="mr-4 justify-center items-center">
           <View
-            className="items-center justify-center bg-gray-50 rounded-lg"
+            className="items-center justify-center bg-gray-50 rounded-lg p-2"
             style={{ width: 48, height: 48 }}
           >
             <Image

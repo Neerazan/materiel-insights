@@ -23,22 +23,22 @@ export default function BoMLayout() {
           }}
         />
         <Tabs.Screen
-          name="assets/index"
+          name="drawings/index"
           options={{
-            title: 'Assets',
-            tabBarIcon: ({ color, focused }) => <FontAwesome
-              name={'table'}
+            title: 'Drawings',
+            tabBarIcon: ({ color, focused }) => <FontAwesome6
+              name={'compass-drafting'}
               size={24}
               color={focused ? '#3B82F6' : color}
             />
           }}
         />
         <Tabs.Screen
-          name="drawings/index"
+          name="assets/index"
           options={{
-            title: 'Drawings',
-            tabBarIcon: ({ color, focused }) => <FontAwesome6
-              name={'compass-drafting'}
+            title: 'Assets',
+            tabBarIcon: ({ color, focused }) => <FontAwesome
+              name={'table'}
               size={24}
               color={focused ? '#3B82F6' : color}
             />

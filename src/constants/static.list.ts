@@ -4,3 +4,9 @@ export enum FilterType {
   DateRange = "dateRange",
   Dropdown = "dropdown",
 }
+
+export enum ItemType {
+  Parts = "Parts",
+  Drawings = "Drawings",
+  Documents = "Documents",
+}

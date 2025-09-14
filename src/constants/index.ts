@@ -52,6 +52,12 @@ export const drawingData = [
     "number": "Drawing-8",
     "name": "Electronic Power Module",
     "description": "This is a drawing of the electronic power module",
+  },
+  {
+    "id": "9i5j1k0l-6k2f-3g4h-7i8j-0e1f2g3h4i5j",
+    "number": "Drawing-9",
+    "name": "Aircraft Wing Panel",
+    "description": "This is a drawing of the aircraft wing panel",
   }
 ]
 
