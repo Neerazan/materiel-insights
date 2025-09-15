@@ -5,7 +5,7 @@ import { Drawing } from "@/src/constants/types";
 import DrawingCard from "@/src/features/drawings/drawing-card";
 import DrawingList from "@/src/features/drawings/drawing-list";
 import { drawingFilterConfig } from "@/src/features/drawings/filter-config";
-import { Alert } from "react-native";
+import { DrawingFormConfig } from "@/src/features/drawings/form-config";
 
 export default function Drawings() {
   return (
@@ -13,7 +13,7 @@ export default function Drawings() {
       data={drawingData}
       itemType={ItemType.Drawings}
       filterable={true}
-      onAddItem={() => { Alert.alert("Add Part", "Add drawing button pressed") }}
+      formConfig={DrawingFormConfig}
       cardView={DrawingCard}
       listView={DrawingList}
       filterConfig={drawingFilterConfig}

@@ -1,4 +1,4 @@
-import { FilterType } from "./static.list"
+import { FilterType, FormComponent } from "./static.list"
 
 export interface FilterConfig {
   label: string
@@ -31,3 +31,12 @@ export interface Drawing {
   name: string
   description: string
 }
+
+export type FormConfig = {
+  name: string;
+  label: string;
+  component: keyof typeof FormComponent;
+  optional?: boolean;
+  placeholder?: string;
+  options?: any[];
+};

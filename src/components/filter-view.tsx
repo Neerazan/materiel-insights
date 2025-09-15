@@ -4,32 +4,34 @@ import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ItemType } from '../constants/static.list';
-import { FilterConfig } from '../constants/types';
+import { FilterConfig, FormConfig } from '../constants/types';
 import useFilter from '../hooks/use-filter';
+import FormModel from './form-model';
 
 
 interface FilterViewProps<T> {
   data: T[];
   itemType: keyof typeof ItemType;
-  onAddItem?: () => void;
   filterable?: boolean;
   cardView: (item: T) => React.ReactElement;
   listView: (item: T) => React.ReactElement;
   filterConfig?: FilterConfig[];
+  formConfig: FormConfig[];
 }
 
 function FilterView<T extends { id: string }>({
   data = [],
   itemType,
-  onAddItem,
   filterable = true,
   cardView,
   listView,
   filterConfig = [],
+  formConfig,
 }: FilterViewProps<T>) {
   const [isListView, setIsListView] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<Record<string, any>>({});
+  const [showForm, setShowForm] = useState(false);
 
   const { filteredItems } = useFilter<T>(data, filterConfig, filters);
 
@@ -41,7 +43,11 @@ function FilterView<T extends { id: string }>({
   }
 
   const onReset = () => {
-    setFilters([]);
+    setFilters({});
+  }
+
+  const onAddItem = () => {
+    setShowForm(true);
   }
 
   return (
@@ -119,6 +125,18 @@ function FilterView<T extends { id: string }>({
         onFilter={onFilter}
         onReset={onReset}
         currentFilters={filters}
+      />
+
+      {/* Form Model */}
+      <FormModel
+        visible={showForm}
+        onClose={() => setShowForm(false)}
+        formConfig={formConfig}
+        onSubmit={(values) => {
+          console.log('Submitting values:', values);
+        }}
+        initialValues={null}
+        itemType={itemType}
       />
     </SafeAreaView>
   );

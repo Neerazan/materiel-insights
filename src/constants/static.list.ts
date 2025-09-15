@@ -10,3 +10,11 @@ export enum ItemType {
   Drawings = "Drawings",
   Documents = "Documents",
 }
+
+export enum FormComponent {
+  TextInput = "TextInput",
+  NumberInput = "NumberInput",
+  DateInput = "DateInput",
+  Dropdown = "Dropdown",
+  TextArea = "TextArea",
+}
