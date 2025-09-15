@@ -55,12 +55,10 @@ const MixedForm = ({ formConfig, onSbumit, itemType, initialValues }: Props) => 
         data={formConfig}
         renderItem={({ item }) => renderFormField(item)}
         keyExtractor={(item) => item.name}
-        showsVerticalScrollIndicator={true}
+        showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ flexGrow: 1 }}
       />
 
-      {/* Footer buttons */}
       <View className="flex-row justify-between mt-4">
         <TouchableOpacity
           className="px-4 py-3 rounded-lg bg-gray-200 flex-1 mr-2"

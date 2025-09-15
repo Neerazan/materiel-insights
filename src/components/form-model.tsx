@@ -28,7 +28,7 @@ const FormModel = ({ visible, onClose, formConfig, onSubmit, initialValues, item
               <Text className="text-red-500 font-semibold">Close</Text>
             </TouchableOpacity>
           </View>
-          <View className="max-h-[60vh]">
+          <View className="max-h-[70vh]">
             <MixedForm
               formConfig={formConfig}
               onSbumit={onSubmit}
