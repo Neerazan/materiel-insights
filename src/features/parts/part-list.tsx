@@ -1,7 +1,7 @@
-import React from 'react'
 import DefaultList from '@/src/components/default-list'
-import { Part } from '@/src/constants/types'
 import { icons } from '@/src/constants'
+import { Part } from '@/src/constants/types'
+import React from 'react'
 
 const PartList = (dataItem: Part) => {
   return (

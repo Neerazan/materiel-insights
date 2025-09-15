@@ -1,5 +1,5 @@
+import { FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 import { Tabs } from "expo-router";
-import { FontAwesome6, FontAwesome } from '@expo/vector-icons';
 
 export default function BoMLayout() {
   return (

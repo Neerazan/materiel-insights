@@ -1,11 +1,11 @@
 import FilterView from "@/src/components/filter-view";
 import { drawingData } from "@/src/constants";
-import { Alert } from "react-native";
+import { ItemType } from "@/src/constants/static.list";
+import { Drawing } from "@/src/constants/types";
 import DrawingCard from "@/src/features/drawings/drawing-card";
 import DrawingList from "@/src/features/drawings/drawing-list";
-import { Drawing } from "@/src/constants/types";
 import { drawingFilterConfig } from "@/src/features/drawings/filter-config";
-import { ItemType } from "@/src/constants/static.list";
+import { Alert } from "react-native";
 
 export default function Drawings() {
   return (

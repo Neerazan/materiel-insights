@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
-import './global.css'
-import { useAuthStore } from "../store/auth.store";
 import { StatusBar } from "react-native";
+import { useAuthStore } from "../store/auth.store";
+import './global.css';
 
 export default function RootLayout() {
 

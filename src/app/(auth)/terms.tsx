@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import React from "react";
-import { useAuthStore } from "@/src/store/auth.store";
 import { AuthContentLayout } from "@/src/components/auth-content-layout";
+import { useAuthStore } from "@/src/store/auth.store";
+import React from "react";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 export default function ConsentScreen() {
   const { setTermsAccepted } = useAuthStore();

@@ -1,7 +1,7 @@
 import { FilterType } from "@/src/constants/static.list"
 import { FilterConfig } from "@/src/constants/types"
 
-export const drawingFilterConfig : FilterConfig[] = [
+export const drawingFilterConfig: FilterConfig[] = [
   {
     label: "Drawing Name",
     filterType: FilterType.Search,

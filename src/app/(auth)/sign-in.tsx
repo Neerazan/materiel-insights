@@ -1,12 +1,12 @@
-import React from "react"
-import { View, Text, TouchableOpacity } from "react-native"
-import CustomInput from "@/src/components/custom-input"
-import { Link, router } from "expo-router"
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useAuthStore } from "@/src/store/auth.store";
 import { AuthScreenLayout } from "@/src/components/auth-screen-layout";
+import CustomInput from "@/src/components/custom-input";
+import { useAuthStore } from "@/src/store/auth.store";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, router } from "expo-router";
+import React from "react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Text, TouchableOpacity, View } from "react-native";
+import { z } from "zod";
 
 export default function LoginForm() {
   const userSchema = z.object({

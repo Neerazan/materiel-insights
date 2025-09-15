@@ -1,7 +1,7 @@
 import { FilterType } from "@/src/constants/static.list"
 import { FilterConfig } from "@/src/constants/types"
 
-export const PartFilterConfig : FilterConfig[] = [
+export const PartFilterConfig: FilterConfig[] = [
   {
     label: "Part Name",
     filterType: FilterType.Search,

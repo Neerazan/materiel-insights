@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { Image, ImageSourcePropType, Text, TouchableOpacity, View } from 'react-native';
 
 type Props = {
   title: string;

@@ -1,6 +1,6 @@
+import { deleteItemAsync, getItem, setItem } from "expo-secure-store";
+import { createJSONStorage, persist } from "zustand/middleware";
 import { create } from "zustand/react";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { getItem, setItem, deleteItemAsync } from "expo-secure-store";
 
 type userState = {
   isLoggedIn: boolean;

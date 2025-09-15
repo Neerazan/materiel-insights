@@ -3,9 +3,9 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ItemType } from '../constants/static.list';
 import { FilterConfig } from '../constants/types';
 import useFilter from '../hooks/use-filter';
-import { ItemType } from '../constants/static.list';
 
 
 interface FilterViewProps<T> {
