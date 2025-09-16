@@ -26,33 +26,51 @@ export default function BoMLayout() {
           name="drawings/index"
           options={{
             title: 'Drawings',
-            tabBarIcon: ({ color, focused }) => <FontAwesome6
-              name={'compass-drafting'}
-              size={24}
-              color={focused ? '#3B82F6' : color}
-            />
+            tabBarIcon: ({ color, focused }) =>
+              <FontAwesome6
+                name={'compass-drafting'}
+                size={24}
+                color={focused ? '#3B82F6' : color}
+              />
           }}
         />
         <Tabs.Screen
           name="assets/index"
           options={{
             title: 'Assets',
-            tabBarIcon: ({ color, focused }) => <FontAwesome
-              name={'table'}
-              size={24}
-              color={focused ? '#3B82F6' : color}
-            />
+            tabBarIcon: ({ color, focused }) =>
+              <FontAwesome
+                name={'table'}
+                size={24}
+                color={focused ? '#3B82F6' : color}
+              />
           }}
         />
         <Tabs.Screen
           name="structure/index"
           options={{
             title: 'Structure',
-            tabBarIcon: ({ color, focused }) => <FontAwesome6
-              name={'folder-tree'}
-              size={24}
-              color={focused ? '#3B82F6' : color}
-            />
+            tabBarIcon: ({ color, focused }) =>
+              <FontAwesome6
+                name={'folder-tree'}
+                size={24}
+                color={focused ? '#3B82F6' : color}
+              />
+          }}
+        />
+
+        {/* Hide details page from tab bar */}
+        <Tabs.Screen
+          name="parts/[id]/index"
+          options={{
+            href: null,
+          }}
+        />
+
+        <Tabs.Screen
+          name="drawings/[id]/index"
+          options={{
+            href: null,
           }}
         />
       </Tabs>
