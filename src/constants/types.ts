@@ -40,3 +40,15 @@ export type FormConfig = {
   placeholder?: string;
   options?: any[];
 };
+
+export interface Tab {
+  id: string;
+  title: string;
+  selected?: boolean;
+}
+
+export interface BreadCrumbItem {
+  label: string;
+  href: any;
+  disabled?: boolean;
+}

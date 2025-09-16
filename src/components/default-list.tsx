@@ -67,7 +67,7 @@ export default function DefaultListItem({
                 </View>
               )}
               ListFooterComponent={
-                <View className="flex-row" style={{ height: 25 }}>
+                <View className="flex-row ml-auto" style={{ height: 25 }}>
                   <TouchableOpacity
                     className="flex-1 bg-blue-50 border border-blue-500 rounded-md justify-center items-center mx-1 px-1"
                     onPress={(e) => {

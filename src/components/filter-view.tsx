@@ -61,7 +61,7 @@ function FilterView<T extends { id: string }>({
           <View className="flex-row items-center justify-between mb-3">
             <View>
               <Text className="text-lg font-semibold text-gray-900">{itemType}</Text>
-              <View className='absolute -top-2 -right-4 flex items-center justify-center size-5 bg-[#3B82F6] rounded-full'>
+              <View className='absolute -top-2 -right-4 flex items-center justify-center size-5 bg-primary rounded-full'>
                 <Text className='text-xs text-white font-semibold'>{filteredItems.length}</Text>
               </View>
             </View>
