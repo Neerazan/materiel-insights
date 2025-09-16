@@ -1,10 +1,12 @@
 import DetailPage from '@/src/components/detail-page'
+import { drawingData } from '@/src/constants'
 import { BreadCrumbItem, Tab } from '@/src/constants/types'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
 
 const DrawingDetails = () => {
   const { id } = useLocalSearchParams()
+  const dataItem = drawingData.find((item) => item.id === id)
 
   const tabs: Tab[] = [
     { id: '1', title: 'Overview', selected: true },
@@ -21,7 +23,7 @@ const DrawingDetails = () => {
       href: '/(boms)/drawings',
     },
     {
-      label: id.toString(),
+      label: dataItem?.name || '',
       href: `/(boms)/drawings/${id}`,
       disabled: true,
     }
