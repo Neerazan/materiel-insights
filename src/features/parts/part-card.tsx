@@ -1,6 +1,7 @@
 import DefaultCard from "@/src/components/default-card";
 import { icons } from "@/src/constants";
 import { Part } from "@/src/constants/types";
+import { router } from "expo-router";
 import { ReactElement } from "react";
 
 export default function PartCard(dataItem: Part): ReactElement {
@@ -15,6 +16,9 @@ export default function PartCard(dataItem: Part): ReactElement {
         "Status": dataItem?.status,
         "Lead Time": dataItem?.leadTime,
         "Cost": dataItem?.cost,
+      }}
+      onPress={() => {
+        router.push(`/(boms)/parts/${dataItem.id}`);
       }}
     />
   );

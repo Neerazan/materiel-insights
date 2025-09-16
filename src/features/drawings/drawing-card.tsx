@@ -1,6 +1,7 @@
 import DefaultCard from "@/src/components/default-card";
 import { icons } from "@/src/constants";
 import { Drawing } from "@/src/constants/types";
+import { router } from "expo-router";
 import { ReactElement } from "react";
 
 export default function DrawingCard(dataItem: Drawing): ReactElement {
@@ -12,6 +13,9 @@ export default function DrawingCard(dataItem: Drawing): ReactElement {
         "Number": dataItem?.number,
         "Name": dataItem?.name,
         "Description": dataItem?.description,
+      }}
+      onPress={() => {
+        router.push(`/(boms)/drawings/${dataItem.id}`);
       }}
     />
   );

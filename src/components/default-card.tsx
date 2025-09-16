@@ -33,9 +33,7 @@ const DefaultCard = ({
   isFavorited = false,
 }: Props) => {
   const handleCardPress = () => {
-    if (onPress) {
-      onPress();
-    }
+    onPress && onPress();
   };
 
   return (
