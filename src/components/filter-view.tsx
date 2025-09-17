@@ -153,10 +153,14 @@ function FilterView<T extends { id: string }>({
       {/* Form Model */}
       <FormModel
         visible={showForm}
-        onClose={() => setShowForm(false)}
+        onClose={() => {
+          setSelectedItem(null);
+          setShowForm(false)
+        }}
         formConfig={formConfig}
         formSchema={formSchema}
         onSubmit={(values) => {
+          setSelectedItem(null);
           setShowForm(false);
           Alert.alert('Success', `Successfully Submitted ${itemType} with values: ${JSON.stringify(values)}`);
         }}
