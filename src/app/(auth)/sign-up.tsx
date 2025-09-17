@@ -8,52 +8,52 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { z } from "zod";
 
 
+const userSchema = z.object({
+  firstName: z
+    .string()
+    .min(3, { message: "First Name must be at least 3 characters." })
+    .max(30, { message: "First Name must be at most 30 characters." }),
+  lastName: z
+    .string()
+    .min(3, { message: "Last Name must be at least 3 characters." })
+    .max(30, { message: "Last Name must be at most 30 characters." }),
+  email: z
+    .string()
+    .min(3, { message: "Email must be at least 3 characters." })
+    .max(30, { message: "Email must be at most 30 characters." })
+    .regex(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      { message: "Email must be a valid email address." }
+    ),
+  username: z
+    .string()
+    .min(3, { message: "Username must be at least 3 characters." })
+    .max(30, { message: "Username must be at most 30 characters." }),
+  password: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." })
+    .max(30, { message: "Password must be at most 30 characters." })
+    .regex(
+      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/,
+      { message: "Password must contain at least one number, one special character and one uppercase letter." }
+    ),
+  confirmPassword: z
+    .string()
+    .min(8, { message: "Password must be at least 8 characters." })
+    .max(30, { message: "Password must be at most 30 characters." })
+    .regex(
+      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/,
+      { message: "Password must contain at least one number, one special character and one uppercase letter." }
+    ),
+}).refine((data) => data.password === data.confirmPassword, {
+  path: ["confirmPassword"],
+  message: "Passwords do not match",
+})
+
+type UserFormType = z.infer<typeof userSchema>;
+
 const SignUp = () => {
-
-  const userSchema = z.object({
-    firstName: z
-      .string()
-      .min(3, { message: "First Name must be at least 3 characters." })
-      .max(30, { message: "First Name must be at most 30 characters." }),
-    lastName: z
-      .string()
-      .min(3, { message: "Last Name must be at least 3 characters." })
-      .max(30, { message: "Last Name must be at most 30 characters." }),
-    email: z
-      .string()
-      .min(3, { message: "Email must be at least 3 characters." })
-      .max(30, { message: "Email must be at most 30 characters." })
-      .regex(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        { message: "Email must be a valid email address." }
-      ),
-    username: z
-      .string()
-      .min(3, { message: "Username must be at least 3 characters." })
-      .max(30, { message: "Username must be at most 30 characters." }),
-    password: z
-      .string()
-      .min(8, { message: "Password must be at least 8 characters." })
-      .max(30, { message: "Password must be at most 30 characters." })
-      .regex(
-        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/,
-        { message: "Password must contain at least one number, one special character and one uppercase letter." }
-      ),
-    confirmPassword: z
-      .string()
-      .min(8, { message: "Password must be at least 8 characters." })
-      .max(30, { message: "Password must be at most 30 characters." })
-      .regex(
-        /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/,
-        { message: "Password must contain at least one number, one special character and one uppercase letter." }
-      ),
-  }).refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passwords do not match",
-  })
-
-  type UserFormType = z.infer<typeof userSchema>;
-
+  
   const {
     control,
     handleSubmit,
@@ -70,7 +70,6 @@ const SignUp = () => {
       confirmPassword: "",
     }
   });
-
 
   const onSubmit: SubmitHandler<UserFormType> = (data: UserFormType) => {
     reset();

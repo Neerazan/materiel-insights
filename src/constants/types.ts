@@ -36,7 +36,7 @@ export type FormConfig = {
   name: string;
   label: string;
   component: keyof typeof FormComponent;
-  optional?: boolean;
+  required: boolean;
   placeholder?: string;
   options?: any[];
 };

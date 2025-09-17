@@ -5,7 +5,7 @@ import { Part } from "@/src/constants/types";
 import { PartFilterConfig } from "@/src/features/parts/filter-config";
 import PartCard from "../../../features/parts/part-card";
 import PartList from "../../../features/parts/part-list";
-import { PartFormConfig } from "@/src/features/parts/form-config";
+import { PartFormConfig, PartFormScehema } from "@/src/features/parts/form-config";
 
 export default function Parts() {
   return (
@@ -16,6 +16,7 @@ export default function Parts() {
       cardView={PartCard}
       listView={PartList}
       filterConfig={PartFilterConfig}
+      formSchema={PartFormScehema}
       formConfig={PartFormConfig}
     />
   );

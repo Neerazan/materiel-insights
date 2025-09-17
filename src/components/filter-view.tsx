@@ -1,7 +1,7 @@
 import FilterModal from '@/src/components/filter-model';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View, } from 'react-native';
+import { Alert, FlatList, Text, TouchableOpacity, View, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ItemType } from '../constants/static.list';
 import { FilterConfig, FormConfig } from '../constants/types';
@@ -17,6 +17,7 @@ interface FilterViewProps<T> {
   listView: (item: T) => React.ReactElement;
   filterConfig?: FilterConfig[];
   formConfig: FormConfig[];
+  formSchema?: any;
 }
 
 function FilterView<T extends { id: string }>({
@@ -27,6 +28,7 @@ function FilterView<T extends { id: string }>({
   listView,
   filterConfig = [],
   formConfig,
+  formSchema,
 }: FilterViewProps<T>) {
   const [isListView, setIsListView] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -132,8 +134,10 @@ function FilterView<T extends { id: string }>({
         visible={showForm}
         onClose={() => setShowForm(false)}
         formConfig={formConfig}
+        formSchema={formSchema}
         onSubmit={(values) => {
-          console.log('Submitting values:', values);
+          setShowForm(false);
+          Alert.alert('Success', `Successfully Submitted ${itemType} with values: ${JSON.stringify(values)}`);
         }}
         initialValues={null}
         itemType={itemType}

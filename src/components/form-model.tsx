@@ -10,9 +10,10 @@ type Props = {
   onSubmit: (values: Record<string, any>) => void;
   initialValues?: Record<string, any> | null;
   itemType: keyof typeof ItemType;
+  formSchema?: any;
 };
 
-const FormModel = ({ visible, onClose, formConfig, onSubmit, initialValues, itemType }: Props) => {
+const FormModel = ({ visible, onClose, formConfig, onSubmit, initialValues, itemType, formSchema }: Props) => {
   return (
     <Modal
       visible={visible}
@@ -31,7 +32,8 @@ const FormModel = ({ visible, onClose, formConfig, onSubmit, initialValues, item
           <View className="max-h-[70vh]">
             <MixedForm
               formConfig={formConfig}
-              onSbumit={onSubmit}
+              formSchema={formSchema}
+              onSubmit={onSubmit}
               itemType={itemType}
               initialValues={initialValues}
             />
