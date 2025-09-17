@@ -8,6 +8,8 @@ export type DataItemProps = {
   defaultIcon?: string;
   cardBody?: Record<string, any>;
   onClick?: () => void;
+  onDelete?: () => void;
+  onEdit?: () => void;
 };
 
 const camelCaseToTitleCase = (str: string) => {
@@ -21,6 +23,9 @@ export default function DefaultListItem({
   title,
   listImage,
   cardBody = {},
+  onDelete,
+  onClick,
+  onEdit
 }: DataItemProps) {
   return (
     <View
@@ -72,6 +77,7 @@ export default function DefaultListItem({
                     className="flex-1 bg-blue-50 border border-blue-500 rounded-md justify-center items-center mx-1 px-1"
                     onPress={(e) => {
                       e.stopPropagation();
+                      onEdit && onEdit();
                     }}
                   >
                     <Ionicons name="pencil" size={16} color="#007AFF" />
@@ -81,6 +87,7 @@ export default function DefaultListItem({
                     className="flex-1 bg-red-50 border border-red-500 rounded-md justify-center items-center mx-1 px-1"
                     onPress={(e) => {
                       e.stopPropagation();
+                      onDelete && onDelete();
                     }}
                   >
                     <Ionicons name="trash" size={16} color="#FF3B30" />

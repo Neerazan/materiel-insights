@@ -4,7 +4,13 @@ import { Drawing } from "@/src/constants/types";
 import { router } from "expo-router";
 import { ReactElement } from "react";
 
-export default function DrawingCard(dataItem: Drawing): ReactElement {
+type Props = {
+  dataItem: Drawing;
+  onEdit?: () => void;
+  onDelete?: () => void;
+};
+
+export default function DrawingCard({ dataItem, onEdit, onDelete} : Props): ReactElement {
   return (
     <DefaultCard
       title={dataItem?.name}
@@ -17,6 +23,8 @@ export default function DrawingCard(dataItem: Drawing): ReactElement {
       onPress={() => {
         router.push(`/(boms)/drawings/${dataItem.id}`);
       }}
+      onEdit={onEdit}
+      onDelete={onDelete}
     />
   );
 }

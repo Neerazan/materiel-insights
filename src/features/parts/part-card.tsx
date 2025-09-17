@@ -4,7 +4,13 @@ import { Part } from "@/src/constants/types";
 import { router } from "expo-router";
 import { ReactElement } from "react";
 
-export default function PartCard(dataItem: Part): ReactElement {
+type Props = {
+  dataItem: Part;
+  onEdit?: () => void;
+  onDelete?: () => void;
+};
+
+export default function PartCard({ dataItem, onEdit, onDelete }: Props): ReactElement {
   return (
     <DefaultCard
       title={dataItem?.name}
@@ -20,6 +26,8 @@ export default function PartCard(dataItem: Part): ReactElement {
       onPress={() => {
         router.push(`/(boms)/parts/${dataItem.id}`);
       }}
+      onEdit={onEdit}
+      onDelete={onDelete}
     />
   );
 }

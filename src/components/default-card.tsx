@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, ImageSourcePropType, Text, TouchableOpacity, View } from 'react-native';
 
 type Props = {
@@ -30,8 +30,10 @@ const DefaultCard = ({
   onEdit,
   onDelete,
   onFavorite,
-  isFavorited = false,
 }: Props) => {
+
+  const [isFavorited, setIsFavorited] = useState(false);
+
   const handleCardPress = () => {
     onPress && onPress();
   };
@@ -106,9 +108,10 @@ const DefaultCard = ({
 
         <TouchableOpacity
           className="flex-1 bg-gray-50 border border-gray-300 rounded-md justify-center items-center mx-1"
+          activeOpacity={1}
           onPress={(e) => {
             e.stopPropagation();
-            onFavorite && onFavorite();
+            setIsFavorited(!isFavorited);
           }}
         >
           <Ionicons

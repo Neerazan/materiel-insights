@@ -10,7 +10,7 @@ export interface FilterConfig {
 
 export interface Part {
   id: string
-  r_num: number
+  r_num: string
   partNumber: string
   cageCode: string
   name: string

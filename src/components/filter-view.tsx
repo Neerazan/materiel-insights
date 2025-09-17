@@ -13,8 +13,8 @@ interface FilterViewProps<T> {
   data: T[];
   itemType: keyof typeof ItemType;
   filterable?: boolean;
-  cardView: (item: T) => React.ReactElement;
-  listView: (item: T) => React.ReactElement;
+  cardView: ({ dataItem, onEdit, onDelete }: { dataItem: T, onEdit?: () => void, onDelete?: () => void }) => React.ReactElement;
+  listView: ({ dataItem, onEdit, onDelete }: { dataItem: T, onEdit?: () => void, onDelete?: () => void }) => React.ReactElement;
   filterConfig?: FilterConfig[];
   formConfig: FormConfig[];
   formSchema?: any;
@@ -34,6 +34,7 @@ function FilterView<T extends { id: string }>({
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState<Record<string, any>>({});
   const [showForm, setShowForm] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<T | null>(null);
 
   const { filteredItems } = useFilter<T>(data, filterConfig, filters);
 
@@ -50,6 +51,20 @@ function FilterView<T extends { id: string }>({
 
   const onAddItem = () => {
     setShowForm(true);
+  }
+
+  const onEdit = ({ item } : { item: T}) => {
+    setSelectedItem(item);
+    setShowForm(true);
+  }
+
+  const onDelete = ({ item } : { item: T }) => {
+    Alert.alert('Are you sure you want to delete this item?', 'This action is irreversible.', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Delete', onPress: () => {
+        // i will implement logic later 
+      } },
+    ]);
   }
 
   return (
@@ -107,7 +122,13 @@ function FilterView<T extends { id: string }>({
           columnWrapperStyle={numColumns > 1 ? { justifyContent: "space-between", gap: 8 } : null}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ padding: 8 }}
-          renderItem={({ item }) => renderItemFunction(item)}
+          renderItem={({ item }) =>
+            renderItemFunction({
+              dataItem: item,
+              onEdit: () => onEdit({ item }),
+              onDelete: () => onDelete({ item })
+            })
+          }
         />
       </View>
 
@@ -139,7 +160,7 @@ function FilterView<T extends { id: string }>({
           setShowForm(false);
           Alert.alert('Success', `Successfully Submitted ${itemType} with values: ${JSON.stringify(values)}`);
         }}
-        initialValues={null}
+        initialValues={selectedItem}
         itemType={itemType}
       />
     </SafeAreaView>

@@ -64,7 +64,7 @@ export const drawingData = [
 export const partsData = [
   {
     "id": "1e7f3a2e-8c4b-5d6f-9a1b-2c3d4e5f6a7b",
-    "r_num": 1,
+    "r_num": "263940",
     "partNumber": "PN-10001",
     "cageCode": "1A23B",
     "name": "Hydraulic Pump Assembly",
@@ -80,7 +80,7 @@ export const partsData = [
   },
   {
     "id": "2b8f4c3d-9d5e-6f7a-0b1c-3d4e5f6a7b8c",
-    "r_num": 2,
+    "r_num": "934734",
     "partNumber": "PN-10002",
     "cageCode": "2C45D",
     "name": "Fuel Control Valve",
@@ -96,7 +96,7 @@ export const partsData = [
   },
   {
     "id": "3c9f5d4e-0e6f-7a8b-1c2d-4e5f6a7b8c9d",
-    "r_num": 3,
+    "r_num": "873415",
     "partNumber": "PN-10003",
     "cageCode": "3E56F",
     "name": "Landing Gear Strut",
@@ -112,7 +112,7 @@ export const partsData = [
   },
   {
     "id": "4d0f6e5f-1f7a-8b9c-2d3e-5f6a7b8c9d0e",
-    "r_num": 4,
+    "r_num": "373294",
     "partNumber": "PN-10004",
     "cageCode": "4G67H",
     "name": "Avionics Control Panel",
@@ -128,7 +128,7 @@ export const partsData = [
   },
   {
     "id": "5e1f7g6h-2g8b-9c0d-3e4f-6a7b8c9d0e1f",
-    "r_num": 5,
+    "r_num": "348358",
     "partNumber": "PN-10005",
     "cageCode": "5I78J",
     "name": "Engine Turbine Blade",
@@ -144,7 +144,7 @@ export const partsData = [
   },
   {
     "id": "6f2g8h7i-3h9c-0d1e-4f5g-7b8c9d0e1f2g",
-    "r_num": 6,
+    "r_num": "837409",
     "partNumber": "PN-10006",
     "cageCode": "6K89L",
     "name": "Oxygen Supply Regulator",
@@ -160,7 +160,7 @@ export const partsData = [
   },
   {
     "id": "7g3h9i8j-4i0d-1e2f-5g6h-8c9d0e1f2g3h",
-    "r_num": 7,
+    "r_num": "358434",
     "partNumber": "PN-10007",
     "cageCode": "7M90N",
     "name": "Cockpit Display Unit",
@@ -176,7 +176,7 @@ export const partsData = [
   },
   {
     "id": "8h4i0j9k-5j1e-2f3g-6h7i-9d0e1f2g3h4i",
-    "r_num": 8,
+    "r_num": "834743",
     "partNumber": "PN-10008",
     "cageCode": "8O12P",
     "name": "Electronic Power Module",
@@ -192,7 +192,7 @@ export const partsData = [
   },
   {
     "id": "9i5j1k0l-6k2f-3g4h-7i8j-0e1f2g3h4i5j",
-    "r_num": 9,
+    "r_num": "234932",
     "partNumber": "PN-10009",
     "cageCode": "9Q23R",
     "name": "Aircraft Wing Panel",
@@ -208,7 +208,7 @@ export const partsData = [
   },
   {
     "id": "0j6k2l1m-7l3g-4h5i-8j9k-1f2g3h4i5j6k",
-    "r_num": 10,
+    "r_num": "109834",
     "partNumber": "PN-10010",
     "cageCode": "0S34T",
     "name": "Flight Data Recorder",

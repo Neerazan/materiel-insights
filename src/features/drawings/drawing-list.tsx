@@ -3,11 +3,19 @@ import { icons } from '@/src/constants'
 import { Drawing } from '@/src/constants/types'
 import React from 'react'
 
-const DrawingList = (dataItem: Drawing) => {
+type Props = {
+  dataItem: Drawing;
+  onEdit?: () => void;
+  onDelete?: () => void;
+}
+
+const DrawingList = ({ dataItem, onEdit, onDelete }: Props) => {
   return (
     <DefaultList
       title={dataItem?.name}
       listImage={icons.drawings}
+      onDelete={onDelete}
+      onEdit={onEdit}
       cardBody={{
         "Number": dataItem?.number,
         "Name": dataItem?.name,
