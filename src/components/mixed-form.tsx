@@ -3,7 +3,7 @@ import React from 'react';
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { z } from "zod";
-import { FormComponent, ItemType } from '../constants/static.list';
+import { FormComponent } from '../constants/static.list';
 import { FormConfig } from '../constants/types';
 import CustomInput from './custom-input';
 
@@ -11,7 +11,6 @@ import CustomInput from './custom-input';
 type Props = {
   formConfig: FormConfig[];
   onSubmit: (values: Record<string, any>) => void;
-  itemType: keyof typeof ItemType;
   initialValues?: Record<string, any> | null;
   formSchema: any;
 };
@@ -106,7 +105,7 @@ const MixedForm = ({ formConfig, onSubmit, initialValues, formSchema }: Props) =
         />
       </View>
 
-      <View className="flex-row justify-between mt-4">
+      <View className="flex-row justify-between mt-8">
         <TouchableOpacity
           className="px-4 py-3 rounded-lg bg-gray-200 flex-1 mr-2"
           onPress={() => { reset() }}

@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { Tab } from "../constants/types";
 
-export default function Tabs({ tabs }: { tabs: Tab[] }) {
+type Props = {
+  tabs: Tab[];
+  selectedTab: Tab | undefined;
+  setSelectedTab: any;
+}
 
-  const [activeTab, setActiveTab] = useState(() => {
-    return tabs.find((tab: any) => tab.selected)?.id;
-  });
-
+export default function Tabs({ tabs, selectedTab, setSelectedTab }: Props) {
   return (
     <View className="bg-white h-auto px-4 py-2">
       <FlatList
@@ -17,11 +17,11 @@ export default function Tabs({ tabs }: { tabs: Tab[] }) {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
-            className={`px-4 py-2 rounded-[3px] border ${activeTab === item.id ? 'bg-primary border-primary' : 'bg-white border-gray-400'}`}
+            className={`px-4 py-2 rounded-[3px] border ${selectedTab?.id === item.id ? 'bg-primary border-primary' : 'bg-white border-gray-400'}`}
             activeOpacity={1}
-            onPress={() => setActiveTab(item.id)}
+            onPress={() => setSelectedTab(item)}
           >
-            <Text className={`text-md ${activeTab === item.id ? 'text-white' : 'text-gray-800'}`}>{item.title}</Text>
+            <Text className={`text-md ${selectedTab?.id === item.id ? 'text-white' : 'text-gray-800'}`}>{item.title}</Text>
           </TouchableOpacity>
         )}
         contentContainerClassName='gap-2'

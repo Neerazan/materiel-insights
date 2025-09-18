@@ -3,10 +3,11 @@ import { partsData } from '@/src/constants'
 import { BreadCrumbItem, Tab } from '@/src/constants/types'
 import { useLocalSearchParams } from 'expo-router'
 import React from 'react'
+import { View, Text } from 'react-native'
+import PartDetailTabs from '@/src/features/parts/part-detail-tabs'
 
 const tabs: Tab[] = [
-  { id: '1', title: 'Overview', selected: true },
-  { id: '2', title: 'Details' },
+  { id: '2', title: 'Details', selected: true },
   { id: '3', title: 'IPB Structure' },
   { id: '4', title: 'Where Used' },
   { id: '5', title: 'Attachments' },
@@ -32,10 +33,17 @@ const PartDetail = () => {
   ]
 
   return (
-    <DetailPage
-      tabs={tabs}
-      breadCrumbData={breadCrumbData}
-    />
+    dataItem ? (
+      <DetailPage
+        tabs={tabs}
+        breadCrumbData={breadCrumbData}
+        detailTabs={PartDetailTabs}
+        item={dataItem}
+      />
+    ) :
+      <View>
+        <Text>Not Implemented</Text>
+      </View>
   )
 }
 
