@@ -23,7 +23,7 @@ const MixedForm = ({ formConfig, onSubmit, initialValues, formSchema }: Props) =
     control,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: initialValues,
@@ -113,7 +113,8 @@ const MixedForm = ({ formConfig, onSubmit, initialValues, formSchema }: Props) =
           <Text className="text-center font-semibold">Reset</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          className="px-4 py-3 rounded-lg bg-[#0D6EFD] flex-1 ml-2"
+          className={`px-4 py-3 rounded-lg flex-1 ml-2 ${initialValues && !isDirty ? 'bg-gray-300' : 'bg-[#0D6EFD]'}`}
+          disabled={!!initialValues && !isDirty}
           onPress={handleSubmit(onDataSubmit)}
         >
           <Text className="text-center text-white font-semibold">{initialValues ? `Update` : `Create`}</Text>

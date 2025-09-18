@@ -41,7 +41,6 @@ const FormModel = ({ visible, onClose, formConfig, onSubmit, initialValues, item
             formConfig={formConfig}
             formSchema={formSchema}
             onSubmit={onSubmit}
-            itemType={itemType}
             initialValues={initialValues}
           />
         </View>
