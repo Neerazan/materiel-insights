@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { FilterConfig } from "../constants/types";
 import FilterCard from "./filter-card";
+import { Ionicons } from "@expo/vector-icons";
 
 type Props = {
   visible: boolean;
@@ -25,8 +26,15 @@ export default function FilterModal({ visible, onClose, filterConfig, onFilter, 
         <View className="bg-white rounded-t-2xl p-4 h-[70%]">
           <View className="flex-row justify-between items-center mb-4">
             <Text className="text-lg font-bold">Filters</Text>
-            <TouchableOpacity onPress={onClose}>
-              <Text className="text-red-500 font-semibold">Close</Text>
+            <TouchableOpacity
+              onPress={onClose}
+              activeOpacity={0.6}
+              className="p-2"
+            >
+              <Ionicons
+                name="close"
+                size={24}
+              />
             </TouchableOpacity>
           </View>
           <FilterCard

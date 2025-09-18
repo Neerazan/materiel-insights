@@ -1,11 +1,11 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import React from 'react';
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { z } from "zod";
 import { FormComponent, ItemType } from '../constants/static.list';
 import { FormConfig } from '../constants/types';
 import CustomInput from './custom-input';
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 
 
 type Props = {
@@ -94,14 +94,17 @@ const MixedForm = ({ formConfig, onSubmit, initialValues, formSchema }: Props) =
   }
 
   return (
-    <View className="bg-white">
-      <FlatList
-        data={formConfig}
-        renderItem={({ item }) => renderFormField(item)}
-        keyExtractor={(item) => item.name}
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-      />
+    <View className='flex-1'>
+      <View className='flex-1'>
+        <FlatList
+          data={formConfig}
+          renderItem={({ item }) => renderFormField(item)}
+          keyExtractor={(item) => item.name}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 10 }}
+        />
+      </View>
 
       <View className="flex-row justify-between mt-4">
         <TouchableOpacity
